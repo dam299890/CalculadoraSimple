@@ -25,7 +25,6 @@ steps:
 - checkout: git://tictactoe
   displayName: 'Checkout test repository'
  
-
 - script: |
     cd test
     mkdir -p reports
