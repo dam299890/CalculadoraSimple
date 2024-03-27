@@ -24,7 +24,7 @@ steps:
 
 - checkout: git://MyProject/MyToolsRepo
 
-- checkout: git://dam299890/test.git
+- checkout: git://dam299890/test
   displayName: 'Checkout test repository'
 
 - script: |
