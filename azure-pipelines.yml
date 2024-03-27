@@ -22,7 +22,7 @@ steps:
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
-- checkout: git://dam299890/test
+- checkout: git://test
   displayName: 'Checkout test repository'
 
 - script: |
