@@ -22,9 +22,9 @@ steps:
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
-- checkout: git://test
+- checkout: self
   displayName: 'Checkout test repository'
-  persistCredentials: true
+ 
 
 - script: |
     cd test
