@@ -1,0 +1,42 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.12'
+    addToPath: true
+    architecture: 'x64'
+  displayName: 'Use Python 3.12'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
+
+- checkout: https://github.com/dam299890/test
+  displayName: 'Checkout test repository'
+
+- script: |
+    cd test
+    mkdir -p reports
+    pytest test_categorias.py --html=reports/automation-test.html
+  displayName: 'Run test categorias'
+
+- script: echo "artifactPath=tests/reports/" >> $(Build.ArtifactStagingDirectory)/$env:GITHUB_OUTPUT
+  displayName: 'Set output'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish test-report'
+  inputs:
+    PathtoPublish: $(Build.ArtifactStagingDirectory)/$env:GITHUB_OUTPUT
+    ArtifactName: 'test-report'
+
