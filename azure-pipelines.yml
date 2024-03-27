@@ -3,6 +3,13 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+resources:
+  repositories:
+  - repository: test
+    type: github
+    endpoint: github.com_dam299890
+    name: dam299890/test
+
 trigger:
 - main
 
@@ -22,7 +29,7 @@ steps:
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
-- checkout: git://tictactoe
+- checkout: test
   displayName: 'Checkout test repository'
  
 - script: |
