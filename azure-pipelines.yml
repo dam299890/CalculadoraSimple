@@ -24,6 +24,7 @@ steps:
 
 - checkout: git://test
   displayName: 'Checkout test repository'
+  persistCredentials: true
 
 - script: |
     cd test
