@@ -38,7 +38,7 @@ steps:
     pytest test_categorias.py --html=reports/automation-test.html
   displayName: 'Run test categorias'
 
-- script: echo "artifactPath=tests/reports/" >> $(Build.ArtifactStagingDirectory)/$env:GITHUB_OUTPUT
+- script: echo "artifactPath=test/reports/" >> $(Build.ArtifactStagingDirectory)/$env:GITHUB_OUTPUT
   displayName: 'Set output'
 
 - task: PublishBuildArtifacts@1
